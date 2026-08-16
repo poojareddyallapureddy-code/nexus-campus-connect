@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppExpertsRouteImport } from './routes/app.experts'
+import { Route as AppResourcesRouteImport } from './routes/app.resources'
+import { Route as AppRndRouteImport } from './routes/app.rnd'
 import { Route as AppTeamsRouteImport } from './routes/app.teams'
 import { Route as AppAcademicIndexRouteImport } from './routes/app.academic.index'
 import { Route as AppAcademicIdRouteImport } from './routes/app.academic.$id'
@@ -33,6 +36,21 @@ const AppRoute = AppRouteImport.update({
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppExpertsRoute = AppExpertsRouteImport.update({
+  id: '/experts',
+  path: '/experts',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppResourcesRoute = AppResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRndRoute = AppRndRouteImport.update({
+  id: '/rnd',
+  path: '/rnd',
   getParentRoute: () => AppRoute,
 } as any)
 const AppTeamsRoute = AppTeamsRouteImport.update({
@@ -74,6 +92,9 @@ const AppOpportunitiesIdRoute = AppOpportunitiesIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/experts': typeof AppExpertsRoute
+  '/app/resources': typeof AppResourcesRoute
+  '/app/rnd': typeof AppRndRoute
   '/app/teams': typeof AppTeamsRoute
   '/app/': typeof AppIndexRoute
   '/app/academic/$id': typeof AppAcademicIdRoute
@@ -85,6 +106,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/experts': typeof AppExpertsRoute
+  '/app/resources': typeof AppResourcesRoute
+  '/app/rnd': typeof AppRndRoute
   '/app/teams': typeof AppTeamsRoute
   '/app': typeof AppIndexRoute
   '/app/academic/$id': typeof AppAcademicIdRoute
@@ -98,6 +122,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/experts': typeof AppExpertsRoute
+  '/app/resources': typeof AppResourcesRoute
+  '/app/rnd': typeof AppRndRoute
   '/app/teams': typeof AppTeamsRoute
   '/app/': typeof AppIndexRoute
   '/app/academic/$id': typeof AppAcademicIdRoute
@@ -112,6 +139,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/app/experts'
+    | '/app/resources'
+    | '/app/rnd'
     | '/app/teams'
     | '/app/'
     | '/app/academic/$id'
@@ -123,6 +153,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/app/experts'
+    | '/app/resources'
+    | '/app/rnd'
     | '/app/teams'
     | '/app'
     | '/app/academic/$id'
@@ -135,6 +168,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/app/experts'
+    | '/app/resources'
+    | '/app/rnd'
     | '/app/teams'
     | '/app/'
     | '/app/academic/$id'
@@ -171,6 +207,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/experts': {
+      id: '/app/experts'
+      path: '/experts'
+      fullPath: '/app/experts'
+      preLoaderRoute: typeof AppExpertsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/resources': {
+      id: '/app/resources'
+      path: '/resources'
+      fullPath: '/app/resources'
+      preLoaderRoute: typeof AppResourcesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/rnd': {
+      id: '/app/rnd'
+      path: '/rnd'
+      fullPath: '/app/rnd'
+      preLoaderRoute: typeof AppRndRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/teams': {
@@ -226,6 +283,9 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppExpertsRoute: typeof AppExpertsRoute
+  AppResourcesRoute: typeof AppResourcesRoute
+  AppRndRoute: typeof AppRndRoute
   AppTeamsRoute: typeof AppTeamsRoute
   AppIndexRoute: typeof AppIndexRoute
   AppAcademicIdRoute: typeof AppAcademicIdRoute
@@ -237,6 +297,9 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppExpertsRoute: AppExpertsRoute,
+  AppResourcesRoute: AppResourcesRoute,
+  AppRndRoute: AppRndRoute,
   AppTeamsRoute: AppTeamsRoute,
   AppIndexRoute: AppIndexRoute,
   AppAcademicIdRoute: AppAcademicIdRoute,
