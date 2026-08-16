@@ -238,7 +238,7 @@ export function AppShell() {
       </div>
 
       <nav className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-around border-t border-border bg-sidebar/95 py-2 backdrop-blur-xl lg:hidden">
-        {[nav[0], nav[1], nav[4], nav[9], bottomNav[1]].map((i) => (
+        {mobileNav.map((i) => (
           <Link
             key={i.to}
             to={i.to}
