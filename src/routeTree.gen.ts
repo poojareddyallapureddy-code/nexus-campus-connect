@@ -12,7 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppActivityRouteImport } from './routes/app.activity'
+import { Route as AppCertificationsRouteImport } from './routes/app.certifications'
 import { Route as AppExpertsRouteImport } from './routes/app.experts'
+import { Route as AppNotificationsRouteImport } from './routes/app.notifications'
+import { Route as AppRemindersRouteImport } from './routes/app.reminders'
 import { Route as AppResourcesRouteImport } from './routes/app.resources'
 import { Route as AppRndRouteImport } from './routes/app.rnd'
 import { Route as AppTeamsRouteImport } from './routes/app.teams'
@@ -38,9 +42,29 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppActivityRoute = AppActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCertificationsRoute = AppCertificationsRouteImport.update({
+  id: '/certifications',
+  path: '/certifications',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppExpertsRoute = AppExpertsRouteImport.update({
   id: '/experts',
   path: '/experts',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNotificationsRoute = AppNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRemindersRoute = AppRemindersRouteImport.update({
+  id: '/reminders',
+  path: '/reminders',
   getParentRoute: () => AppRoute,
 } as any)
 const AppResourcesRoute = AppResourcesRouteImport.update({
@@ -92,7 +116,11 @@ const AppOpportunitiesIdRoute = AppOpportunitiesIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/activity': typeof AppActivityRoute
+  '/app/certifications': typeof AppCertificationsRoute
   '/app/experts': typeof AppExpertsRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/reminders': typeof AppRemindersRoute
   '/app/resources': typeof AppResourcesRoute
   '/app/rnd': typeof AppRndRoute
   '/app/teams': typeof AppTeamsRoute
@@ -106,7 +134,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/activity': typeof AppActivityRoute
+  '/app/certifications': typeof AppCertificationsRoute
   '/app/experts': typeof AppExpertsRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/reminders': typeof AppRemindersRoute
   '/app/resources': typeof AppResourcesRoute
   '/app/rnd': typeof AppRndRoute
   '/app/teams': typeof AppTeamsRoute
@@ -122,7 +154,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/activity': typeof AppActivityRoute
+  '/app/certifications': typeof AppCertificationsRoute
   '/app/experts': typeof AppExpertsRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/reminders': typeof AppRemindersRoute
   '/app/resources': typeof AppResourcesRoute
   '/app/rnd': typeof AppRndRoute
   '/app/teams': typeof AppTeamsRoute
@@ -139,7 +175,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/app/activity'
+    | '/app/certifications'
     | '/app/experts'
+    | '/app/notifications'
+    | '/app/reminders'
     | '/app/resources'
     | '/app/rnd'
     | '/app/teams'
@@ -153,7 +193,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/app/activity'
+    | '/app/certifications'
     | '/app/experts'
+    | '/app/notifications'
+    | '/app/reminders'
     | '/app/resources'
     | '/app/rnd'
     | '/app/teams'
@@ -168,7 +212,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/app/activity'
+    | '/app/certifications'
     | '/app/experts'
+    | '/app/notifications'
+    | '/app/reminders'
     | '/app/resources'
     | '/app/rnd'
     | '/app/teams'
@@ -209,11 +257,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/activity': {
+      id: '/app/activity'
+      path: '/activity'
+      fullPath: '/app/activity'
+      preLoaderRoute: typeof AppActivityRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/certifications': {
+      id: '/app/certifications'
+      path: '/certifications'
+      fullPath: '/app/certifications'
+      preLoaderRoute: typeof AppCertificationsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/experts': {
       id: '/app/experts'
       path: '/experts'
       fullPath: '/app/experts'
       preLoaderRoute: typeof AppExpertsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/notifications': {
+      id: '/app/notifications'
+      path: '/notifications'
+      fullPath: '/app/notifications'
+      preLoaderRoute: typeof AppNotificationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/reminders': {
+      id: '/app/reminders'
+      path: '/reminders'
+      fullPath: '/app/reminders'
+      preLoaderRoute: typeof AppRemindersRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/resources': {
@@ -283,7 +359,11 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppActivityRoute: typeof AppActivityRoute
+  AppCertificationsRoute: typeof AppCertificationsRoute
   AppExpertsRoute: typeof AppExpertsRoute
+  AppNotificationsRoute: typeof AppNotificationsRoute
+  AppRemindersRoute: typeof AppRemindersRoute
   AppResourcesRoute: typeof AppResourcesRoute
   AppRndRoute: typeof AppRndRoute
   AppTeamsRoute: typeof AppTeamsRoute
@@ -297,7 +377,11 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppActivityRoute: AppActivityRoute,
+  AppCertificationsRoute: AppCertificationsRoute,
   AppExpertsRoute: AppExpertsRoute,
+  AppNotificationsRoute: AppNotificationsRoute,
+  AppRemindersRoute: AppRemindersRoute,
   AppResourcesRoute: AppResourcesRoute,
   AppRndRoute: AppRndRoute,
   AppTeamsRoute: AppTeamsRoute,
