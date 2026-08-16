@@ -10,33 +10,264 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/app'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppActivityRouteImport } from './routes/app.activity'
+import { Route as AppCertificationsRouteImport } from './routes/app.certifications'
+import { Route as AppExpertsRouteImport } from './routes/app.experts'
+import { Route as AppNotificationsRouteImport } from './routes/app.notifications'
+import { Route as AppProfileRouteImport } from './routes/app.profile'
+import { Route as AppRemindersRouteImport } from './routes/app.reminders'
+import { Route as AppResourcesRouteImport } from './routes/app.resources'
+import { Route as AppRndRouteImport } from './routes/app.rnd'
+import { Route as AppSearchRouteImport } from './routes/app.search'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppTeamsRouteImport } from './routes/app.teams'
+import { Route as AppAcademicIndexRouteImport } from './routes/app.academic.index'
+import { Route as AppAcademicIdRouteImport } from './routes/app.academic.$id'
+import { Route as AppClubsIndexRouteImport } from './routes/app.clubs.index'
+import { Route as AppClubsIdRouteImport } from './routes/app.clubs.$id'
+import { Route as AppOpportunitiesIndexRouteImport } from './routes/app.opportunities.index'
+import { Route as AppOpportunitiesIdRouteImport } from './routes/app.opportunities.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppActivityRoute = AppActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCertificationsRoute = AppCertificationsRouteImport.update({
+  id: '/certifications',
+  path: '/certifications',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppExpertsRoute = AppExpertsRouteImport.update({
+  id: '/experts',
+  path: '/experts',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNotificationsRoute = AppNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRemindersRoute = AppRemindersRouteImport.update({
+  id: '/reminders',
+  path: '/reminders',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppResourcesRoute = AppResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRndRoute = AppRndRouteImport.update({
+  id: '/rnd',
+  path: '/rnd',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSearchRoute = AppSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTeamsRoute = AppTeamsRouteImport.update({
+  id: '/teams',
+  path: '/teams',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAcademicIndexRoute = AppAcademicIndexRouteImport.update({
+  id: '/academic/',
+  path: '/academic/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAcademicIdRoute = AppAcademicIdRouteImport.update({
+  id: '/academic/$id',
+  path: '/academic/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppClubsIndexRoute = AppClubsIndexRouteImport.update({
+  id: '/clubs/',
+  path: '/clubs/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppClubsIdRoute = AppClubsIdRouteImport.update({
+  id: '/clubs/$id',
+  path: '/clubs/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppOpportunitiesIndexRoute = AppOpportunitiesIndexRouteImport.update({
+  id: '/opportunities/',
+  path: '/opportunities/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppOpportunitiesIdRoute = AppOpportunitiesIdRouteImport.update({
+  id: '/opportunities/$id',
+  path: '/opportunities/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/activity': typeof AppActivityRoute
+  '/app/certifications': typeof AppCertificationsRoute
+  '/app/experts': typeof AppExpertsRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/reminders': typeof AppRemindersRoute
+  '/app/resources': typeof AppResourcesRoute
+  '/app/rnd': typeof AppRndRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/teams': typeof AppTeamsRoute
+  '/app/': typeof AppIndexRoute
+  '/app/academic/$id': typeof AppAcademicIdRoute
+  '/app/clubs/$id': typeof AppClubsIdRoute
+  '/app/opportunities/$id': typeof AppOpportunitiesIdRoute
+  '/app/academic/': typeof AppAcademicIndexRoute
+  '/app/clubs/': typeof AppClubsIndexRoute
+  '/app/opportunities/': typeof AppOpportunitiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/activity': typeof AppActivityRoute
+  '/app/certifications': typeof AppCertificationsRoute
+  '/app/experts': typeof AppExpertsRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/reminders': typeof AppRemindersRoute
+  '/app/resources': typeof AppResourcesRoute
+  '/app/rnd': typeof AppRndRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/teams': typeof AppTeamsRoute
+  '/app': typeof AppIndexRoute
+  '/app/academic/$id': typeof AppAcademicIdRoute
+  '/app/clubs/$id': typeof AppClubsIdRoute
+  '/app/opportunities/$id': typeof AppOpportunitiesIdRoute
+  '/app/academic': typeof AppAcademicIndexRoute
+  '/app/clubs': typeof AppClubsIndexRoute
+  '/app/opportunities': typeof AppOpportunitiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/activity': typeof AppActivityRoute
+  '/app/certifications': typeof AppCertificationsRoute
+  '/app/experts': typeof AppExpertsRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/reminders': typeof AppRemindersRoute
+  '/app/resources': typeof AppResourcesRoute
+  '/app/rnd': typeof AppRndRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/teams': typeof AppTeamsRoute
+  '/app/': typeof AppIndexRoute
+  '/app/academic/$id': typeof AppAcademicIdRoute
+  '/app/clubs/$id': typeof AppClubsIdRoute
+  '/app/opportunities/$id': typeof AppOpportunitiesIdRoute
+  '/app/academic/': typeof AppAcademicIndexRoute
+  '/app/clubs/': typeof AppClubsIndexRoute
+  '/app/opportunities/': typeof AppOpportunitiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/activity'
+    | '/app/certifications'
+    | '/app/experts'
+    | '/app/notifications'
+    | '/app/profile'
+    | '/app/reminders'
+    | '/app/resources'
+    | '/app/rnd'
+    | '/app/search'
+    | '/app/settings'
+    | '/app/teams'
+    | '/app/'
+    | '/app/academic/$id'
+    | '/app/clubs/$id'
+    | '/app/opportunities/$id'
+    | '/app/academic/'
+    | '/app/clubs/'
+    | '/app/opportunities/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/app/activity'
+    | '/app/certifications'
+    | '/app/experts'
+    | '/app/notifications'
+    | '/app/profile'
+    | '/app/reminders'
+    | '/app/resources'
+    | '/app/rnd'
+    | '/app/search'
+    | '/app/settings'
+    | '/app/teams'
+    | '/app'
+    | '/app/academic/$id'
+    | '/app/clubs/$id'
+    | '/app/opportunities/$id'
+    | '/app/academic'
+    | '/app/clubs'
+    | '/app/opportunities'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/activity'
+    | '/app/certifications'
+    | '/app/experts'
+    | '/app/notifications'
+    | '/app/profile'
+    | '/app/reminders'
+    | '/app/resources'
+    | '/app/rnd'
+    | '/app/search'
+    | '/app/settings'
+    | '/app/teams'
+    | '/app/'
+    | '/app/academic/$id'
+    | '/app/clubs/$id'
+    | '/app/opportunities/$id'
+    | '/app/academic/'
+    | '/app/clubs/'
+    | '/app/opportunities/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +279,189 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/activity': {
+      id: '/app/activity'
+      path: '/activity'
+      fullPath: '/app/activity'
+      preLoaderRoute: typeof AppActivityRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/certifications': {
+      id: '/app/certifications'
+      path: '/certifications'
+      fullPath: '/app/certifications'
+      preLoaderRoute: typeof AppCertificationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/experts': {
+      id: '/app/experts'
+      path: '/experts'
+      fullPath: '/app/experts'
+      preLoaderRoute: typeof AppExpertsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/notifications': {
+      id: '/app/notifications'
+      path: '/notifications'
+      fullPath: '/app/notifications'
+      preLoaderRoute: typeof AppNotificationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/reminders': {
+      id: '/app/reminders'
+      path: '/reminders'
+      fullPath: '/app/reminders'
+      preLoaderRoute: typeof AppRemindersRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/resources': {
+      id: '/app/resources'
+      path: '/resources'
+      fullPath: '/app/resources'
+      preLoaderRoute: typeof AppResourcesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/rnd': {
+      id: '/app/rnd'
+      path: '/rnd'
+      fullPath: '/app/rnd'
+      preLoaderRoute: typeof AppRndRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/search': {
+      id: '/app/search'
+      path: '/search'
+      fullPath: '/app/search'
+      preLoaderRoute: typeof AppSearchRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/teams': {
+      id: '/app/teams'
+      path: '/teams'
+      fullPath: '/app/teams'
+      preLoaderRoute: typeof AppTeamsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/academic/': {
+      id: '/app/academic/'
+      path: '/academic'
+      fullPath: '/app/academic/'
+      preLoaderRoute: typeof AppAcademicIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/academic/$id': {
+      id: '/app/academic/$id'
+      path: '/academic/$id'
+      fullPath: '/app/academic/$id'
+      preLoaderRoute: typeof AppAcademicIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/clubs/': {
+      id: '/app/clubs/'
+      path: '/clubs'
+      fullPath: '/app/clubs/'
+      preLoaderRoute: typeof AppClubsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/clubs/$id': {
+      id: '/app/clubs/$id'
+      path: '/clubs/$id'
+      fullPath: '/app/clubs/$id'
+      preLoaderRoute: typeof AppClubsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/opportunities/': {
+      id: '/app/opportunities/'
+      path: '/opportunities'
+      fullPath: '/app/opportunities/'
+      preLoaderRoute: typeof AppOpportunitiesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/opportunities/$id': {
+      id: '/app/opportunities/$id'
+      path: '/opportunities/$id'
+      fullPath: '/app/opportunities/$id'
+      preLoaderRoute: typeof AppOpportunitiesIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppActivityRoute: typeof AppActivityRoute
+  AppCertificationsRoute: typeof AppCertificationsRoute
+  AppExpertsRoute: typeof AppExpertsRoute
+  AppNotificationsRoute: typeof AppNotificationsRoute
+  AppProfileRoute: typeof AppProfileRoute
+  AppRemindersRoute: typeof AppRemindersRoute
+  AppResourcesRoute: typeof AppResourcesRoute
+  AppRndRoute: typeof AppRndRoute
+  AppSearchRoute: typeof AppSearchRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppTeamsRoute: typeof AppTeamsRoute
+  AppIndexRoute: typeof AppIndexRoute
+  AppAcademicIdRoute: typeof AppAcademicIdRoute
+  AppClubsIdRoute: typeof AppClubsIdRoute
+  AppOpportunitiesIdRoute: typeof AppOpportunitiesIdRoute
+  AppAcademicIndexRoute: typeof AppAcademicIndexRoute
+  AppClubsIndexRoute: typeof AppClubsIndexRoute
+  AppOpportunitiesIndexRoute: typeof AppOpportunitiesIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppActivityRoute: AppActivityRoute,
+  AppCertificationsRoute: AppCertificationsRoute,
+  AppExpertsRoute: AppExpertsRoute,
+  AppNotificationsRoute: AppNotificationsRoute,
+  AppProfileRoute: AppProfileRoute,
+  AppRemindersRoute: AppRemindersRoute,
+  AppResourcesRoute: AppResourcesRoute,
+  AppRndRoute: AppRndRoute,
+  AppSearchRoute: AppSearchRoute,
+  AppSettingsRoute: AppSettingsRoute,
+  AppTeamsRoute: AppTeamsRoute,
+  AppIndexRoute: AppIndexRoute,
+  AppAcademicIdRoute: AppAcademicIdRoute,
+  AppClubsIdRoute: AppClubsIdRoute,
+  AppOpportunitiesIdRoute: AppOpportunitiesIdRoute,
+  AppAcademicIndexRoute: AppAcademicIndexRoute,
+  AppClubsIndexRoute: AppClubsIndexRoute,
+  AppOpportunitiesIndexRoute: AppOpportunitiesIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
