@@ -44,6 +44,14 @@ const nav = [
   { to: "/app/activity", label: "My Activity", icon: Layers },
 ];
 
+const mobileNav = [
+  { to: "/app", label: "Home", icon: Home, exact: true },
+  { to: "/app/opportunities", label: "Discover", icon: Compass },
+  { to: "/app/teams", label: "Teams", icon: Users },
+  { to: "/app/activity", label: "Activity", icon: Layers },
+  { to: "/app/profile", label: "Profile", icon: User },
+] as const;
+
 const bottomNav = [
   { to: "/app/notifications", label: "Notifications", icon: Bell },
   { to: "/app/profile", label: "Profile", icon: User },
