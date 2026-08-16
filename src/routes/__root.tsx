@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { NexusProvider } from "@/lib/nexus-store";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
