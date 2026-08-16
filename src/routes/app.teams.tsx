@@ -19,11 +19,11 @@ import { Progress } from "@/components/ui/progress";
 import { useNexus } from "@/lib/nexus-store";
 import { opportunities, skillFilters, type TeamPost } from "@/lib/nexus-data";
 
-type Search = { event?: string };
+type Search = { event?: string | undefined };
 
 export const Route = createFileRoute("/app/teams")({
   validateSearch: (s: Record<string, unknown>): Search => ({
-    event: typeof s.event === "string" ? s.event : undefined,
+    event: typeof s["event"] === "string" ? (s["event"] as string) : undefined,
   }),
   head: () => ({
     meta: [
