@@ -13,6 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppTeamsRouteImport } from './routes/app.teams'
+import { Route as AppAcademicIndexRouteImport } from './routes/app.academic.index'
+import { Route as AppAcademicIdRouteImport } from './routes/app.academic.$id'
+import { Route as AppClubsIndexRouteImport } from './routes/app.clubs.index'
+import { Route as AppClubsIdRouteImport } from './routes/app.clubs.$id'
 import { Route as AppOpportunitiesIndexRouteImport } from './routes/app.opportunities.index'
 import { Route as AppOpportunitiesIdRouteImport } from './routes/app.opportunities.$id'
 
@@ -36,6 +40,26 @@ const AppTeamsRoute = AppTeamsRouteImport.update({
   path: '/teams',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAcademicIndexRoute = AppAcademicIndexRouteImport.update({
+  id: '/academic/',
+  path: '/academic/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAcademicIdRoute = AppAcademicIdRouteImport.update({
+  id: '/academic/$id',
+  path: '/academic/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppClubsIndexRoute = AppClubsIndexRouteImport.update({
+  id: '/clubs/',
+  path: '/clubs/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppClubsIdRoute = AppClubsIdRouteImport.update({
+  id: '/clubs/$id',
+  path: '/clubs/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppOpportunitiesIndexRoute = AppOpportunitiesIndexRouteImport.update({
   id: '/opportunities/',
   path: '/opportunities/',
@@ -52,14 +76,22 @@ export interface FileRoutesByFullPath {
   '/app': typeof AppRouteWithChildren
   '/app/teams': typeof AppTeamsRoute
   '/app/': typeof AppIndexRoute
+  '/app/academic/$id': typeof AppAcademicIdRoute
+  '/app/clubs/$id': typeof AppClubsIdRoute
   '/app/opportunities/$id': typeof AppOpportunitiesIdRoute
+  '/app/academic/': typeof AppAcademicIndexRoute
+  '/app/clubs/': typeof AppClubsIndexRoute
   '/app/opportunities/': typeof AppOpportunitiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app/teams': typeof AppTeamsRoute
   '/app': typeof AppIndexRoute
+  '/app/academic/$id': typeof AppAcademicIdRoute
+  '/app/clubs/$id': typeof AppClubsIdRoute
   '/app/opportunities/$id': typeof AppOpportunitiesIdRoute
+  '/app/academic': typeof AppAcademicIndexRoute
+  '/app/clubs': typeof AppClubsIndexRoute
   '/app/opportunities': typeof AppOpportunitiesIndexRoute
 }
 export interface FileRoutesById {
@@ -68,7 +100,11 @@ export interface FileRoutesById {
   '/app': typeof AppRouteWithChildren
   '/app/teams': typeof AppTeamsRoute
   '/app/': typeof AppIndexRoute
+  '/app/academic/$id': typeof AppAcademicIdRoute
+  '/app/clubs/$id': typeof AppClubsIdRoute
   '/app/opportunities/$id': typeof AppOpportunitiesIdRoute
+  '/app/academic/': typeof AppAcademicIndexRoute
+  '/app/clubs/': typeof AppClubsIndexRoute
   '/app/opportunities/': typeof AppOpportunitiesIndexRoute
 }
 export interface FileRouteTypes {
@@ -78,14 +114,22 @@ export interface FileRouteTypes {
     | '/app'
     | '/app/teams'
     | '/app/'
+    | '/app/academic/$id'
+    | '/app/clubs/$id'
     | '/app/opportunities/$id'
+    | '/app/academic/'
+    | '/app/clubs/'
     | '/app/opportunities/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/app/teams'
     | '/app'
+    | '/app/academic/$id'
+    | '/app/clubs/$id'
     | '/app/opportunities/$id'
+    | '/app/academic'
+    | '/app/clubs'
     | '/app/opportunities'
   id:
     | '__root__'
@@ -93,7 +137,11 @@ export interface FileRouteTypes {
     | '/app'
     | '/app/teams'
     | '/app/'
+    | '/app/academic/$id'
+    | '/app/clubs/$id'
     | '/app/opportunities/$id'
+    | '/app/academic/'
+    | '/app/clubs/'
     | '/app/opportunities/'
   fileRoutesById: FileRoutesById
 }
@@ -132,6 +180,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTeamsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/academic/': {
+      id: '/app/academic/'
+      path: '/academic'
+      fullPath: '/app/academic/'
+      preLoaderRoute: typeof AppAcademicIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/academic/$id': {
+      id: '/app/academic/$id'
+      path: '/academic/$id'
+      fullPath: '/app/academic/$id'
+      preLoaderRoute: typeof AppAcademicIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/clubs/': {
+      id: '/app/clubs/'
+      path: '/clubs'
+      fullPath: '/app/clubs/'
+      preLoaderRoute: typeof AppClubsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/clubs/$id': {
+      id: '/app/clubs/$id'
+      path: '/clubs/$id'
+      fullPath: '/app/clubs/$id'
+      preLoaderRoute: typeof AppClubsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/opportunities/': {
       id: '/app/opportunities/'
       path: '/opportunities'
@@ -152,14 +228,22 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppTeamsRoute: typeof AppTeamsRoute
   AppIndexRoute: typeof AppIndexRoute
+  AppAcademicIdRoute: typeof AppAcademicIdRoute
+  AppClubsIdRoute: typeof AppClubsIdRoute
   AppOpportunitiesIdRoute: typeof AppOpportunitiesIdRoute
+  AppAcademicIndexRoute: typeof AppAcademicIndexRoute
+  AppClubsIndexRoute: typeof AppClubsIndexRoute
   AppOpportunitiesIndexRoute: typeof AppOpportunitiesIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppTeamsRoute: AppTeamsRoute,
   AppIndexRoute: AppIndexRoute,
+  AppAcademicIdRoute: AppAcademicIdRoute,
+  AppClubsIdRoute: AppClubsIdRoute,
   AppOpportunitiesIdRoute: AppOpportunitiesIdRoute,
+  AppAcademicIndexRoute: AppAcademicIndexRoute,
+  AppClubsIndexRoute: AppClubsIndexRoute,
   AppOpportunitiesIndexRoute: AppOpportunitiesIndexRoute,
 }
 
